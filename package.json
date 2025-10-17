@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.67.0",
+    "dotenv": "^16.3.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "pdf-lib": "^1.17.1"
+  }
+}

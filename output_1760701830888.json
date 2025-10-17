@@ -1,0 +1,73 @@
+{
+  "name": "NextEnergy Solar Fund Limited",
+  "children": [
+    {
+      "name": "HoldCos",
+      "attributes": {
+        "equity": "100%"
+      },
+      "children": [
+        {
+          "name": "SPVs",
+          "attributes": {
+            "equity": "100%"
+          }
+        }
+      ]
+    },
+    {
+      "name": "NextEnergy Solar Holding Limited",
+      "attributes": {
+        "equity": "100%"
+      }
+    },
+    {
+      "name": "NextEnergy Solar Holding III Limited",
+      "attributes": {
+        "equity": "100%"
+      }
+    },
+    {
+      "name": "NextEnergy Solar Holding IV Limited",
+      "attributes": {
+        "equity": "100%"
+      }
+    },
+    {
+      "name": "NextEnergy Solar Holding V Limited",
+      "attributes": {
+        "equity": "100%"
+      }
+    },
+    {
+      "name": "NextEnergy Solar Holding VI Limited",
+      "attributes": {
+        "equity": "100%"
+      }
+    },
+    {
+      "name": "Camilla",
+      "attributes": {
+        "equity": "70%"
+      }
+    },
+    {
+      "name": "Agenor",
+      "attributes": {
+        "equity": "24.5%"
+      }
+    },
+    {
+      "name": "Santarem",
+      "attributes": {
+        "equity": "13.6%"
+      }
+    },
+    {
+      "name": "NextPower III LP",
+      "attributes": {
+        "equity": "6.21%"
+      }
+    }
+  ]
+}
