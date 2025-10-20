@@ -2,6 +2,8 @@
 import { Anthropic, toFile } from "@anthropic-ai/sdk";
 import fs from 'fs';
 import dotenv from "dotenv";
+import { splitAndUploadPDF } from "./split.js";
+dotenv.config();
 
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
@@ -10,19 +12,23 @@ apiKey: ANTHROPIC_API_KEY,
 timeout: 30 * 60 * 1000, 
 });  
 
+const results = await splitAndUploadPDF('./simple.pdf', 50,(progress) => {
+                console.log(`Progress: ${progress.percentage}% - Uploaded ${progress.currentFile} with ID: ${progress.fileId}`);
+            });
+console.log('All files uploaded:zeal', results);
 
-const results = [
-    { file: 'fifty.pdf', id: 'file_011CUCchhG7PkDfiyvS1CspP' },
-    { file: 'hundred.pdf', id: 'file_011CUCchZJeAzfiWdnZrNQKr' },
-    { file: 'oneFifty.pdf', id: 'file_011CUCchXcgkj9RXa956vDst' },
-    { file: 'end.pdf', id: 'file_011CUCchWirpGeA1FCSMYDE9' }
-  ];
+// const results = [
+//     { file: 'fifty.pdf', id: 'file_011CUCchhG7PkDfiyvS1CspP' },
+//     { file: 'hundred.pdf', id: 'file_011CUCchZJeAzfiWdnZrNQKr' },
+//     { file: 'oneFifty.pdf', id: 'file_011CUCchXcgkj9RXa956vDst' },
+//     { file: 'end.pdf', id: 'file_011CUCchWirpGeA1FCSMYDE9' }
+//   ];
 
 async function processFiles() {
   try {
     // Run all uploads in parallel
     const responses = await Promise.all(
-      results.map(async (file) => {
+      results.uploadedFiles.map(async (file) => {
         const response = await anthropic.beta.messages.create({
           model: "claude-sonnet-4-5",
           max_tokens: 1024,
@@ -67,7 +73,7 @@ async function processFiles() {
                   type: "document",
                   source: {
                     type: "file",
-                    file_id: file.id
+                    file_id: file.fileId
                   }
                 }
               ]
